@@ -10,7 +10,7 @@ data class Interface(
     val l2mtu: Int = -1
 )
 
-class InterfaceData {
+class InterfaceIndex {
     val data: List<Interface> = ArrayList()
 }
 
@@ -36,5 +36,5 @@ interface RouterMonitorService {
     ): Call<AuthData>
 
     @GET("api/interface/{router_id}/index")
-    fun interfaceIndex(@Path("router_id") routerId: Int): Call<InterfaceData>
+    fun interfaceIndex(@Path("router_id") routerId: Int): Call<InterfaceIndex>
 }

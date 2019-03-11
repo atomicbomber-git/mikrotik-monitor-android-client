@@ -33,8 +33,8 @@ class InterfaceActivity : AppCompatActivity() {
         interfaceList.layoutManager = LinearLayoutManager(this)
 
         routerMonitorService.interfaceIndex(1)
-            .enqueue(object: Callback<InterfaceData> {
-                override fun onResponse(call: Call<InterfaceData>, response: Response<InterfaceData>) {
+            .enqueue(object: Callback<InterfaceIndex> {
+                override fun onResponse(call: Call<InterfaceIndex>, response: Response<InterfaceIndex>) {
 
                     response.body()?.let {
                         interfaces.addAll(it.data)
@@ -42,7 +42,7 @@ class InterfaceActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<InterfaceData>, t: Throwable) {
+                override fun onFailure(call: Call<InterfaceIndex>, t: Throwable) {
                     Toast.makeText(this@InterfaceActivity, "Error occured.", Toast.LENGTH_SHORT)
                         .show()
                 }
