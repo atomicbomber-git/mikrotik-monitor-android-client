@@ -7,8 +7,12 @@ data class Interface(
     val name: String = "",
     val type: String = "",
     val mtu: Int = -1,
-    val m2tu: Int = -1
+    val l2mtu: Int = -1
 )
+
+class InterfaceData {
+    val data: List<Interface> = ArrayList()
+}
 
 data class AuthData (
     val token_type: String? = null,
@@ -32,5 +36,5 @@ interface RouterMonitorService {
     ): Call<AuthData>
 
     @GET("api/interface/{router_id}/index")
-    fun interfaceIndex(@Path("router_id") routerId: Int): Call<List<Interface>>
+    fun interfaceIndex(@Path("router_id") routerId: Int): Call<InterfaceData>
 }

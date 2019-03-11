@@ -10,6 +10,8 @@
                 android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
                 <TextView
+                        android:textStyle="bold"
+                        android:text="Interface Name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/textInterfaceName"/>
                 <TextView

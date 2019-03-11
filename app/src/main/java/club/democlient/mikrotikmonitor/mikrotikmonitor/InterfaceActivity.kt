@@ -33,16 +33,16 @@ class InterfaceActivity : AppCompatActivity() {
         interfaceList.layoutManager = LinearLayoutManager(this)
 
         routerMonitorService.interfaceIndex(1)
-            .enqueue(object: Callback<List<Interface>> {
-                override fun onResponse(call: Call<List<Interface>>, response: Response<List<Interface>>) {
+            .enqueue(object: Callback<InterfaceData> {
+                override fun onResponse(call: Call<InterfaceData>, response: Response<InterfaceData>) {
 
                     response.body()?.let {
-                        interfaces.addAll(it)
+                        interfaces.addAll(it.data)
                         interfaceList.adapter?.notifyDataSetChanged()
                     }
                 }
 
-                override fun onFailure(call: Call<List<Interface>>, t: Throwable) {
+                override fun onFailure(call: Call<InterfaceData>, t: Throwable) {
                     Toast.makeText(this@InterfaceActivity, "Error occured.", Toast.LENGTH_SHORT)
                         .show()
                 }
@@ -66,7 +66,7 @@ class InterfaceActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.textInterfaceName).text = dataset[position].name
                 findViewById<TextView>(R.id.textInterfaceType).text = dataset[position].type
                 findViewById<TextView>(R.id.textInterfaceMtu).text = dataset[position].mtu.toString()
-                findViewById<TextView>(R.id.textInterfaceM2tu).text = dataset[position].m2tu.toString()
+                findViewById<TextView>(R.id.textInterfaceM2tu).text = dataset[position].l2mtu.toString()
             }
         }
     }
